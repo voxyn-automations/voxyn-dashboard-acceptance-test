@@ -1,0 +1,31 @@
+{
+  "assets": {
+    "css": "static/operations.c49dd9452d9b.css",
+    "favicon": "static/voxyn-favicon.9490d30b07d4.png",
+    "js": "static/operations.0fac7356c84f.js",
+    "logo": "static/voxyn-logo.935139a7fcee.png",
+    "theme": "static/theme.c2a79630e611.js"
+  },
+  "build": "bc0a723894d7",
+  "fingerprint": "1.0.0/bc0a723894d7",
+  "managed_files": [
+    "index.html",
+    "state.json",
+    "static/operations.0fac7356c84f.js",
+    "static/operations.c49dd9452d9b.css",
+    "static/theme.c2a79630e611.js",
+    "static/voxyn-favicon.9490d30b07d4.png",
+    "static/voxyn-logo.935139a7fcee.png",
+    "voxyn-managed.json"
+  ],
+  "managed_sha256": {
+    "index.html": "ac8b5ac3faf67bcf453eb387a92d16ebf81a4dbe947f7995fc6352c565471f1f",
+    "static/operations.0fac7356c84f.js": "0fac7356c84f681282eebc66cd4b6f1fc95583e50777e902ebabd8be731c6559",
+    "static/operations.c49dd9452d9b.css": "c49dd9452d9b0277ddc415202f1271634a46639e2671c94a9656c005fd294f13",
+    "static/theme.c2a79630e611.js": "c2a79630e611650046d94b6f08df4e49c9785232a51c9b97ae68166dee543c14",
+    "static/voxyn-favicon.9490d30b07d4.png": "9490d30b07d4803a7b498d987a074021a8c5b0ffe2c51966ba5fae5d996bd18e",
+    "static/voxyn-logo.935139a7fcee.png": "935139a7fceed9170ad45a0a376e3859a95f12209167d469e047184d72a9ea3d"
+  },
+  "release": "1.0.0",
+  "schema_version": 1
+}
