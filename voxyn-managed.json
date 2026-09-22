@@ -19,7 +19,7 @@
     "voxyn-managed.json"
   ],
   "managed_sha256": {
-    "index.html": "ac8b5ac3faf67bcf453eb387a92d16ebf81a4dbe947f7995fc6352c565471f1f",
+    "index.html": "65368b571f2543b2331065ccd09489148d725387a24958c53b99a2e9227eb841",
     "static/operations.0fac7356c84f.js": "0fac7356c84f681282eebc66cd4b6f1fc95583e50777e902ebabd8be731c6559",
     "static/operations.c49dd9452d9b.css": "c49dd9452d9b0277ddc415202f1271634a46639e2671c94a9656c005fd294f13",
     "static/theme.c2a79630e611.js": "c2a79630e611650046d94b6f08df4e49c9785232a51c9b97ae68166dee543c14",
