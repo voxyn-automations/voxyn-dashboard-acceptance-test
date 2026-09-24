@@ -21,8 +21,8 @@
       "date": "2026-09-24",
       "expected": null,
       "failed": 0,
-      "generated": 2,
-      "missed": 2,
+      "generated": 3,
+      "missed": 3,
       "posted": 0,
       "processing": 0,
       "ready": 0,
@@ -54,7 +54,7 @@
     {
       "post_type": "IMAGE",
       "scheduled_local": "13:30",
-      "status": "UNKNOWN",
+      "status": "MISSED",
       "topic": "Slot 3"
     },
     {
@@ -73,7 +73,7 @@
   "recent_activity": [
     {
       "at": "2026-09-24",
-      "count": 2,
+      "count": 3,
       "kind": "PUBLISHER",
       "result": "MISSED"
     },
@@ -101,7 +101,7 @@
       "local_time": "13:30",
       "post_type": "IMAGE",
       "slot": "Slot 3",
-      "status": "UNKNOWN"
+      "status": "MISSED"
     },
     {
       "local_time": "16:30",
@@ -131,11 +131,11 @@
     "configured": 5,
     "failed": 0,
     "generated": 0,
-    "missed": 2,
+    "missed": 3,
     "posted": 0,
     "processing": 0,
     "ready": 0,
     "source_insufficient": 0
   },
-  "updated_at": "2026-09-24T14:01:00.724764+05:30"
+  "updated_at": "2026-09-24T15:01:01.281891+05:30"
 }
