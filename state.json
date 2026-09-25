@@ -34,10 +34,10 @@
       "expected": 5,
       "failed": 0,
       "generated": 5,
-      "missed": 1,
+      "missed": 2,
       "posted": 0,
       "processing": 0,
-      "ready": 4,
+      "ready": 3,
       "source_insufficient": 0
     }
   ],
@@ -48,7 +48,7 @@
   },
   "next_post": {
     "post_type": "IMAGE",
-    "scheduled_local": "11:55",
+    "scheduled_local": "13:30",
     "status": "READY",
     "topic": "Next production post"
   },
@@ -65,7 +65,7 @@
     {
       "post_type": "IMAGE",
       "scheduled_local": "11:55",
-      "status": "READY",
+      "status": "MISSED",
       "topic": "Slot 2"
     },
     {
@@ -96,7 +96,7 @@
     },
     {
       "at": "2026-09-25",
-      "count": 1,
+      "count": 2,
       "kind": "PUBLISHER",
       "result": "MISSED"
     },
@@ -124,7 +124,7 @@
       "local_time": "11:55",
       "post_type": "IMAGE",
       "slot": "Slot 2",
-      "status": "READY"
+      "status": "MISSED"
     },
     {
       "local_time": "13:30",
@@ -160,11 +160,11 @@
     "configured": 5,
     "failed": 0,
     "generated": 5,
-    "missed": 1,
+    "missed": 2,
     "posted": 0,
     "processing": 0,
-    "ready": 4,
+    "ready": 3,
     "source_insufficient": 0
   },
-  "updated_at": "2026-09-25T12:01:02.888091+05:30"
+  "updated_at": "2026-09-25T14:01:11.035185+05:30"
 }
