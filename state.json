@@ -46,10 +46,10 @@
       "expected": 5,
       "failed": 0,
       "generated": 5,
-      "missed": 4,
+      "missed": 5,
       "posted": 0,
       "processing": 0,
-      "ready": 1,
+      "ready": 0,
       "source_insufficient": 0
     }
   ],
@@ -58,12 +58,7 @@
     "publisher_mode": "DISABLED",
     "safe_launch_verified": false
   },
-  "next_post": {
-    "post_type": "IMAGE",
-    "scheduled_local": "17:30",
-    "status": "READY",
-    "topic": "Next production post"
-  },
+  "next_post": null,
   "profile": "public_pages",
   "publisher_grace_minutes": 70,
   "publishing_block": null,
@@ -95,7 +90,7 @@
     {
       "post_type": "IMAGE",
       "scheduled_local": "17:30",
-      "status": "READY",
+      "status": "MISSED",
       "topic": "Slot 5"
     }
   ],
@@ -108,7 +103,7 @@
     },
     {
       "at": "2026-09-26",
-      "count": 4,
+      "count": 5,
       "kind": "PUBLISHER",
       "result": "MISSED"
     },
@@ -160,7 +155,7 @@
       "local_time": "17:30",
       "post_type": "IMAGE",
       "slot": "Slot 5",
-      "status": "READY"
+      "status": "MISSED"
     }
   ],
   "schema_version": 3,
@@ -178,11 +173,11 @@
     "configured": 5,
     "failed": 0,
     "generated": 5,
-    "missed": 4,
+    "missed": 5,
     "posted": 0,
     "processing": 0,
-    "ready": 1,
+    "ready": 0,
     "source_insufficient": 0
   },
-  "updated_at": "2026-09-26T18:00:54.657389+05:30"
+  "updated_at": "2026-09-26T19:00:58.278688+05:30"
 }
