@@ -78,47 +78,35 @@
     {
       "post_type": "IMAGE",
       "scheduled_local": "10:30",
-      "status": "MISSED",
+      "status": "UNKNOWN",
       "topic": "Slot 1"
     },
     {
       "post_type": "IMAGE",
       "scheduled_local": "11:55",
-      "status": "SOURCE_INSUFFICIENT",
+      "status": "UNKNOWN",
       "topic": "Slot 2"
     },
     {
       "post_type": "IMAGE",
       "scheduled_local": "13:30",
-      "status": "SOURCE_INSUFFICIENT",
+      "status": "UNKNOWN",
       "topic": "Slot 3"
     },
     {
       "post_type": "IMAGE",
       "scheduled_local": "16:30",
-      "status": "SOURCE_INSUFFICIENT",
+      "status": "UNKNOWN",
       "topic": "Slot 4"
     },
     {
       "post_type": "IMAGE",
       "scheduled_local": "17:30",
-      "status": "SOURCE_INSUFFICIENT",
+      "status": "UNKNOWN",
       "topic": "Slot 5"
     }
   ],
   "recent_activity": [
-    {
-      "at": "2026-09-27T15:20:35.348917+00:00",
-      "count": 1,
-      "kind": "SOURCE_DIAGNOSTIC",
-      "result": "SUCCESS"
-    },
-    {
-      "at": "2026-09-27",
-      "count": 1,
-      "kind": "DAILY_GENERATION",
-      "result": "SUCCESS"
-    },
     {
       "at": "2026-09-27",
       "count": 1,
@@ -155,31 +143,31 @@
       "local_time": "10:30",
       "post_type": "IMAGE",
       "slot": "Slot 1",
-      "status": "MISSED"
+      "status": "UNKNOWN"
     },
     {
       "local_time": "11:55",
       "post_type": "IMAGE",
       "slot": "Slot 2",
-      "status": "SOURCE_INSUFFICIENT"
+      "status": "UNKNOWN"
     },
     {
       "local_time": "13:30",
       "post_type": "IMAGE",
       "slot": "Slot 3",
-      "status": "SOURCE_INSUFFICIENT"
+      "status": "UNKNOWN"
     },
     {
       "local_time": "16:30",
       "post_type": "IMAGE",
       "slot": "Slot 4",
-      "status": "SOURCE_INSUFFICIENT"
+      "status": "UNKNOWN"
     },
     {
       "local_time": "17:30",
       "post_type": "IMAGE",
       "slot": "Slot 5",
-      "status": "SOURCE_INSUFFICIENT"
+      "status": "UNKNOWN"
     }
   ],
   "schema_version": 3,
@@ -196,12 +184,12 @@
     "auth_required": 0,
     "configured": 5,
     "failed": 0,
-    "generated": 1,
-    "missed": 1,
+    "generated": 0,
+    "missed": 0,
     "posted": 0,
     "processing": 0,
     "ready": 0,
-    "source_insufficient": 4
+    "source_insufficient": 0
   },
-  "updated_at": "2026-09-27T20:50:52.942975+05:30"
+  "updated_at": "2026-09-28T10:31:31.083869+05:30"
 }
