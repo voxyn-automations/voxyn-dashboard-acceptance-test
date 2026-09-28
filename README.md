@@ -1,6 +1,8 @@
 # VOXYN public operations dashboard
 
-RC10 uses public snapshot schema v2. It adds only the buyer-local generic schedule,
+Product website: <https://voxynautomations.com/>
+
+The dashboard uses the current public-safe snapshot schema. It includes only the buyer-local generic schedule,
 sanitized queue status, configured Publisher grace minutes, and daily aggregate history.
 The browser performs historical filtering, persistent light/dark preference, and schedule
 progression locally; it calls no private API and stores no operational data.

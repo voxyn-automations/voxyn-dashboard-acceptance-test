@@ -27,7 +27,7 @@ function rangeRows(data){
   const rows=Array.isArray(data.daily_history)?data.daily_history:[];
   if(selectedRange==="all")return rows;
   if(selectedRange==="custom"&&customRange)return rows.filter(row=>row.date>=customRange.from&&row.date<=customRange.to);
-  const today=buyerDate(new Date(),data.brand.timezone),days=Number(selectedRange)||1,from=shiftDate(today,1-days);
+  const today=data.brand.timezone?buyerDate(new Date(),data.brand.timezone):new Date().toISOString().slice(0,10),days=Number(selectedRange)||1,from=shiftDate(today,1-days);
   return rows.filter(row=>row.date>=from&&row.date<=today);
 }
 function totals(rows){
@@ -132,7 +132,7 @@ function render(data){
   query("#mobile-queue").innerHTML=data.queue.length?data.queue.map(item=>'<article class="history-card"><div class="history-card-head"><h3>'+esc(item.topic)+'</h3>'+badge(item.status)+'</div><p class="history-meta">'+esc(item.scheduled_local)+" · "+esc(item.post_type)+'</p></article>').join(""):'<div class="empty-state">Waiting for first automation sync.</div>';
   query("#today-empty").hidden=!synced||Number(data.today.generated||0)!==0||Number(data.today.posted||0)!==0||Number(data.today.ready||0)!==0;query("#today-empty").textContent=data.evidence.safe_launch_verified?"No production run has completed today. Safe Launch capability verification passed.":"No synchronized production activity yet today.";query("#alert").hidden=!data.publishing_block;if(data.publishing_block){query("#auth-title").textContent="Publishing paused";query("#auth-description").textContent="Publishing is paused until LinkedIn access is restored.";query("#alert").textContent=data.publishing_block.message}else if(data.evidence.linkedin_access==="VERIFIED"){query("#auth-title").textContent="LinkedIn access verified";query("#auth-description").textContent="Recent read-only identity evidence confirms the configured connection."}else if(data.evidence.linkedin_access==="CONFIGURED_UNVERIFIED"){query("#auth-title").textContent="LinkedIn access configured";query("#auth-description").textContent="Credentials are configured, but no recent durable identity verification is available."}else{query("#auth-title").textContent="LinkedIn access not yet verified";query("#auth-description").textContent="No durable connection evidence is available yet. Credentials and identities are never displayed."}
   query("#activity").innerHTML=data.recent_activity.length?data.recent_activity.map(item=>'<li class="activity-'+esc(item.result.toLowerCase())+'"><span class="timeline-marker"></span><div><time>'+esc(item.at||"")+'</time><strong>'+esc(label(item.kind))+'</strong><span>'+esc(item.count?`${item.count} ${label(item.result).toLowerCase()} post${item.count===1?"":"s"}`:label(item.result))+'</span></div></li>').join(""):'<li class="empty-state">No synchronized activity yet.</li>';
-  renderPeriod(data);renderSchedule(data);query("#error").hidden=true;syncThemeButton();clock();
+  renderPeriod(data);renderSchedule(data);query("#copyright-year").textContent=String(new Date().getFullYear());query("#error").hidden=true;syncThemeButton();clock();
 }
 function refresh(){return fetch("state.json",{cache:"no-store"}).then(response=>{if(!response.ok)throw new Error("snapshot");return response.json()}).then(render).catch(()=>{document.querySelector("#error").hidden=false})}
 document.querySelector("#theme-toggle").addEventListener("click",()=>{window.VoxynTheme.set(window.VoxynTheme.get()==="dark"?"light":"dark");syncThemeButton()});
