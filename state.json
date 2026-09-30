@@ -63,6 +63,18 @@
       "processing": 0,
       "ready": 0,
       "source_insufficient": 4
+    },
+    {
+      "auth_required": 0,
+      "date": "2026-09-28",
+      "expected": 5,
+      "failed": 0,
+      "generated": 5,
+      "missed": 0,
+      "posted": 0,
+      "processing": 0,
+      "ready": 5,
+      "source_insufficient": 0
     }
   ],
   "evidence": {
@@ -107,6 +119,12 @@
     }
   ],
   "recent_activity": [
+    {
+      "at": "2026-09-30T01:57:29.862880+00:00",
+      "count": 1,
+      "kind": "DAILY_GENERATION",
+      "result": "SUCCESS"
+    },
     {
       "at": "2026-09-27",
       "count": 1,
@@ -191,5 +209,5 @@
     "ready": 0,
     "source_insufficient": 0
   },
-  "updated_at": "2026-09-28T10:31:31.083869+05:30"
+  "updated_at": "2026-09-30T07:27:51.856875+05:30"
 }
