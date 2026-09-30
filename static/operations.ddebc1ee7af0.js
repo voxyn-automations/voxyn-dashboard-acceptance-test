@@ -14,8 +14,10 @@ function zonedParts(value,timezone){
   return {date:`${get("year")}-${get("month")}-${get("day")}`,minutes:Number(get("hour"))*60+Number(get("minute"))};
 }
 function buyerDate(value,timezone){return zonedParts(new Date(value),timezone).date}
-function currentDayView(data,now=new Date()){
+function authoritativeNow(data,override){return override||new Date(data.as_of||data.updated_at||Date.now())}
+function currentDayView(data,now=null){
   if(!data.updated_at||!data.brand?.timezone)return data;
+  now=authoritativeNow(data,now);
   const today=buyerDate(now,data.brand.timezone),snapshotDay=buyerDate(data.updated_at,data.brand.timezone);
   if(snapshotDay===today)return data;
   const emptyStatus=row=>({...row,status:"UNKNOWN"});
@@ -27,7 +29,7 @@ function rangeRows(data){
   const rows=Array.isArray(data.daily_history)?data.daily_history:[];
   if(selectedRange==="all")return rows;
   if(selectedRange==="custom"&&customRange)return rows.filter(row=>row.date>=customRange.from&&row.date<=customRange.to);
-  const today=data.brand.timezone?buyerDate(new Date(),data.brand.timezone):new Date().toISOString().slice(0,10),days=Number(selectedRange)||1,from=shiftDate(today,1-days);
+  const now=authoritativeNow(data),today=data.brand.timezone?buyerDate(now,data.brand.timezone):now.toISOString().slice(0,10),days=Number(selectedRange)||1,from=shiftDate(today,1-days);
   return rows.filter(row=>row.date>=from&&row.date<=today);
 }
 function totals(rows){
@@ -89,9 +91,10 @@ function renderPeriod(data){
   document.querySelector("#custom-range").hidden=selectedRange!=="custom";
   renderHistory(data,rows);
 }
-function scheduleState(data,now=new Date()){
+function scheduleState(data,now=null){
   const schedule=Array.isArray(data.schedule)?data.schedule:[];
   if(!schedule.length)return {kind:"EMPTY"};
+  now=authoritativeNow(data,now);
   const current=zonedParts(now,data.brand.timezone),snapshotDay=data.updated_at?buyerDate(data.updated_at,data.brand.timezone):current.date;
   if(snapshotDay!==current.date)return {kind:"WAITING",next:schedule[0]};
   const rows=schedule.map((row,index)=>({...row,index,minutes:Number(row.local_time.slice(0,2))*60+Number(row.local_time.slice(3,5))})).sort((a,b)=>a.minutes-b.minutes||a.index-b.index);
@@ -104,7 +107,7 @@ function scheduleState(data,now=new Date()){
   if(future)return {kind:"FUTURE",row:future};
   return {kind:"COMPLETE",next:rows[0],unresolved:rows.filter(row=>row.status==="READY").length};
 }
-function renderSchedule(data,now=new Date()){
+function renderSchedule(data,now=null){
   const state=scheduleState(data,now),blocked=!!data.publishing_block,mode=data.evidence?.publisher_mode||"LIVE",verified=data.evidence?.linkedin_access==="VERIFIED",eyebrow=document.querySelector("#schedule-eyebrow"),target=document.querySelector("#next-post");
   const capability=blocked?'<p class="schedule-capability blocked">Publishing: <strong>BLOCKED BY AUTH</strong></p>':mode==="DISABLED"?'<p class="schedule-capability paused">Publishing: <strong>PAUSED BY CONFIGURATION</strong></p>':mode==="DRY_RUN"?'<p class="schedule-capability paused">Publishing: <strong>DRY RUN — NO LIVE WRITES</strong></p>':verified?'<p class="schedule-capability available">Publishing: <strong>AVAILABLE</strong></p>':'<p class="schedule-capability paused">Publishing: <strong>AWAITING RUNTIME VERIFICATION</strong></p>';
   if(state.kind==="EMPTY"){eyebrow.textContent="CURRENT SCHEDULE";target.innerHTML='<h2>—</h2><p>Waiting for synchronized buyer schedule.</p>';return}
@@ -119,7 +122,7 @@ function renderSchedule(data,now=new Date()){
 function clock(){if(!currentTimezone)return;document.querySelector("#live-time").textContent=new Intl.DateTimeFormat("en-US",{timeZone:currentTimezone,hour:"numeric",minute:"2-digit",second:"2-digit",hour12:true}).format(new Date());document.querySelector("#live-date").textContent=new Intl.DateTimeFormat("en-US",{timeZone:currentTimezone,dateStyle:"full"}).format(new Date())}
 function syncThemeButton(){const dark=document.documentElement.dataset.theme==="dark",button=document.querySelector("#theme-toggle");button.setAttribute("aria-pressed",String(dark));button.querySelector("span").textContent=dark?"☾":"☀";button.querySelector("strong").textContent=dark?"Dark":"Light"}
 function render(data){
-  if(![1,2,3].includes(data.schema_version)||!data.brand||!Array.isArray(data.queue))throw new Error("snapshot schema");
+  if(![1,2,3,4].includes(data.schema_version)||!data.brand||!Array.isArray(data.queue))throw new Error("snapshot schema");
   data.evidence=data.evidence||{safe_launch_verified:false,linkedin_access:data.publishing_block?"ACTION_REQUIRED":"UNKNOWN",publisher_mode:data.system.publisher==="PAUSED"?"DISABLED":"LIVE"};
   data=currentDayView(data);
   const query=selector=>document.querySelector(selector),synced=!!data.updated_at,publicView=data.profile==="public_pages";snapshot=data;currentTimezone=synced?data.brand.timezone:"";
